@@ -27,7 +27,7 @@ app.post('/signin', (req, res) => {
   handleSignin(req, res, db, bcrypt);
 });
 
-app.post('https://fast-coast-82009.herokuapp.com/register', (req, res) => {
+app.post('/register', (req, res) => {
   handleRegister(req, res, db, bcrypt);
 });
 
