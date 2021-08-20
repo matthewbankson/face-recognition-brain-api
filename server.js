@@ -10,7 +10,6 @@ import { handleApiCall, handleImage } from './controllers/image.js';
 const db = knex({
   client: 'pg',
   connection: {
-    host: 'fast-coast-82009.herokuapp.com',
     connectionString: process.env.DATABASE_URL,
     ssl: true,
   },
