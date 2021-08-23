@@ -7,14 +7,6 @@ import handleSignin from './controllers/signin.js';
 import handleProfileGet from './controllers/profile.js';
 import { handleApiCall, handleImage } from './controllers/image.js';
 
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static('client/build'));
-// }
-
-// app.get('*', (request, response) => {
-//   response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-// });
-
 const db = knex({
   client: 'pg',
   connection: {
@@ -26,6 +18,14 @@ const db = knex({
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 app.get('/', (req, res) => {
   res.send('success');
