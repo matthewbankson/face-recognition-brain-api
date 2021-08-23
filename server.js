@@ -8,11 +8,27 @@ import handleProfileGet from './controllers/profile.js';
 import { handleApiCall, handleImage } from './controllers/image.js';
 // import * as path from 'path';
 
+// const db = knex({
+//   client: 'pg',
+//   connection: {
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: false,
+//   },
+// });
+
 const db = knex({
-  client: 'pg',
-  connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: false,
+  production: {
+    client: 'pg',
+    connection: {
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+    },
+    migrations: {
+      directory: __dirname + '/db/migrations',
+    },
+    seeds: {
+      directory: __dirname + '/db/seeds',
+    },
   },
 });
 
