@@ -6,43 +6,43 @@ import handleRegister from './controllers/register.js';
 import handleSignin from './controllers/signin.js';
 import handleProfileGet from './controllers/profile.js';
 import { handleApiCall, handleImage } from './controllers/image.js';
-import * as path from 'path';
-
-// const db = knex({
-//   client: 'pg',
-//   connection: {
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: false,
-//   },
-// });
+// import * as path from 'path';
 
 const db = knex({
-  production: {
-    client: 'pg',
-    connection: {
-      connectionString: process.env.DATABASE_URL,
-      ssl: { rejectUnauthorized: false },
-    },
-    migrations: {
-      directory: __dirname + '/db/migrations',
-    },
-    seeds: {
-      directory: __dirname + '/db/seeds',
-    },
+  client: 'pg',
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: false,
   },
 });
+
+// const db = knex({
+//   production: {
+//     client: 'pg',
+//     connection: {
+//       connectionString: process.env.DATABASE_URL,
+//       ssl: { rejectUnauthorized: false },
+//     },
+//     migrations: {
+//       directory: __dirname + '/db/migrations',
+//     },
+//     seeds: {
+//       directory: __dirname + '/db/seeds',
+//     },
+//   },
+// });
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('client/build'));
+// }
 
-app.get('*', (request, response) => {
-  response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+// app.get('*', (request, response) => {
+//   response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+// });
 
 app.get('/', (req, res) => {
   res.send('success');
