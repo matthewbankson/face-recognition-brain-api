@@ -37,6 +37,7 @@ app.post('/signin', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
+  res.send('hello');
   handleRegister(req, res, db, bcrypt);
 });
 
