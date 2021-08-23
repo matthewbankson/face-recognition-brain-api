@@ -6,7 +6,7 @@ import handleRegister from './controllers/register.js';
 import handleSignin from './controllers/signin.js';
 import handleProfileGet from './controllers/profile.js';
 import { handleApiCall, handleImage } from './controllers/image.js';
-// import * as path from 'path';
+import * as path from 'path';
 
 // const db = knex({
 //   client: 'pg',
